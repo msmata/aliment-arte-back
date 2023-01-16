@@ -1,19 +1,12 @@
 package com.msmata.alimentarteback.services
 
 import com.msmata.alimentarteback.entities.Momento
+import com.msmata.alimentarteback.repositories.MomentoRepository
 import org.springframework.stereotype.Service
 
 @Service
-class MomentoService() {
-
-    val momentos: List<Momento> = listOf<Momento>(
-                    Momento(1, "Desayuno"),
-                    Momento(2, "Almuerzo"),
-                    Momento(3, "Merienda"),
-                    Momento(4, "Cena"),
-                    Momento(5, "Colaciòn"))
-
+class MomentoService(val repository: MomentoRepository) {
     fun listarMomentos(): List<Momento> {
-        return momentos
+        return repository.findAll()
     }
 }
