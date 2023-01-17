@@ -1,17 +1,12 @@
 package com.msmata.alimentarteback.services
 
 import com.msmata.alimentarteback.entities.Comida
+import com.msmata.alimentarteback.repositories.ComidaRepository
 import org.springframework.stereotype.Service
 
 @Service
-class ComidaService {
-    val comidas: List<Comida> = listOf(
-        Comida(1, "Polenta"),
-        Comida(2, "Ravioles"),
-        Comida(3, "Fideos")
-    )
-
+class ComidaService(val repository: ComidaRepository) {
     fun listarComidas(): List<Comida> {
-        return comidas
+        return repository.findAll()
     }
 }

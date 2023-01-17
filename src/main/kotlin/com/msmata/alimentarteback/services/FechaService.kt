@@ -10,14 +10,13 @@ class FechaService {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("MM dd yyyy")
 
     fun getUltimasFechas(): List<String> {
-        return listOf(
-            LocalDate.of(2022, 6, 10),
-            LocalDate.of(2022, 6, 11),
-            LocalDate.of(2022, 6, 12),
-            LocalDate.of(2022, 6, 13),
-            LocalDate.of(2022, 6, 14),
-            LocalDate.of(2022, 6, 15),
-            LocalDate.of(2022, 6, 16)
-        ).map { fecha -> formatter.format(fecha) }
+        val listaDeFechas: MutableList<LocalDate> = mutableListOf<LocalDate>()
+        val fechaHoy = LocalDate.now()
+
+        for (i in 0..6) {
+            listaDeFechas.add(LocalDate.of(fechaHoy.year, fechaHoy.month, fechaHoy.dayOfMonth - i))
+        }
+
+        return listaDeFechas.map { fecha -> formatter.format(fecha) }
     }
 }
